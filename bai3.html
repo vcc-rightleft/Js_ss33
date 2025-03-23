@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lọc sản phẩm</title>
+</head>
+<body>
+    <select id="danhmuc">
+        <option value="all">- Lựa chọn danh mục -</option>
+        <option value="Đồ ăn">Đồ ăn</option>
+        <option value="Nước">Nước</option>
+        <option value="Dụng cụ">Dụng cụ</option>
+    </select>
+    <button onclick="loc()">Lọc</button>
+    <div id="hien"></div>
+    <script>
+        let dish = [  
+            { name: 'Rau sạch', category: 'Đồ ăn' },  
+            { name: 'Thịt lợn', category: 'Đồ ăn' },  
+            { name: 'Pepsi không calo', category: 'Nước' },  
+            { name: 'Cocacola', category: 'Nước' },  
+            { name: 'Cờ lê', category: 'Dụng cụ' },  
+            { name: 'Tua vít', category: 'Dụng cụ' }  
+        ];  
+        function loc() {
+            let danhMuc = document.getElementById("danhmuc").value;
+            let hien = document.getElementById("hien");
+            let str = "";
+            let loc = (danhMuc == "all") ? dish : dish.filter(item => item.category == danhMuc);
+            loc.forEach(item => {str += `<p>${item.name} - ${item.category}</p>`;});
+            hien.innerHTML = str;
+        }
+    </script>
+</body>
+</html>
